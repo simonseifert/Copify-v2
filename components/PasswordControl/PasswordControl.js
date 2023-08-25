@@ -15,6 +15,7 @@ export const PasswordControl = (props) => {
           value={props.value}
           onChange={props.onChange}
           required={props.required}
+          name={props.name}
         />
         <button
           className={styles.show}

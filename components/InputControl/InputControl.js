@@ -12,6 +12,7 @@ export const InputControl = (props) => {
           value={props.value}
           onChange={props.onChange}
           required={props.required}
+          name={props.name}
         />
       </div>
       {props.description && (

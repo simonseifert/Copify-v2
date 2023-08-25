@@ -41,6 +41,17 @@ export default function Login() {
     router.push("/");
   };
 
+  const setAuth = (field, value) => {
+    setLogin({
+      ...login,
+      [field]: value,
+    });
+  };
+
+  const handleChange = (e) => {
+    setAuth(e.target.name, e.target.value);
+  };
+
   return (
     <div className={styles.body}>
       <div className={styles.header}>
@@ -80,27 +91,19 @@ export default function Login() {
         <div className={clsx(styles.wrapper, styles.wrapperLast)}>
           <form className={styles.form} onSubmit={handleFormSubmit}>
             <InputControl
+              name="email"
               label="Email or username"
               placeholder="Email or username"
               value={login.email}
-              onChange={(e) =>
-                setLogin({
-                  ...login,
-                  email: e.target.value,
-                })
-              }
+              onChange={handleChange}
               required
             />
             <PasswordControl
               label="Password"
               placeholder="Password"
               value={login.password}
-              onChange={(e) =>
-                setLogin({
-                  ...login,
-                  password: e.target.value,
-                })
-              }
+              name="password"
+              onChange={handleChange}
               required
             />
 
