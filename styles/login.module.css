@@ -3,7 +3,7 @@
   width: 750px;
   margin: auto;
   border: 1px solid black;
-  border-radius: 10px;
+  
   padding-top: 40px;
 }
 
@@ -14,15 +14,15 @@
 }
 
 .header {
-  height: 70px;
   background-color: black;
-  margin-bottom: 30px;
+  
 }
 
 .logo {
   width: 120px;
-  margin-top: 30px;
-  margin-left: 40px
+  padding-top: 30px;
+  margin-left: 40px;
+  padding-bottom: 30px;
 }
 
 .title {
@@ -150,6 +150,16 @@
   color: #1ed760;
 }
 
+@media (min-width:766px) {
+  .loginContainer {
+    border-radius: 10px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
 @media (max-width:766px) {
   .loginContainer {
     width: 100%;
@@ -163,10 +173,6 @@
     background: none;
   }
 
-  .loginContainer {
-    margin-top: -110px;
-  }
-
   .title {
     font-size: 30px;
     margin-left: 40px;
@@ -176,7 +182,7 @@
 
   .logo {
     width: 80px;
-    margin-top: 50px;
+    padding-top: 50px;
   }
 
   .wrapper::after {
