@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 async function createUser(data) {
   "use server"
@@ -7,6 +9,9 @@ async function createUser(data) {
   const password = "testpass"
 
   await prisma.user.create({data: {email, password}})
+
+  revalidatePath("/todo")
+  redirect("/todo")
 }
 
 export default function Page() {
