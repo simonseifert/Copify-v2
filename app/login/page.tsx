@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import { Button } from "@/components/Button";
@@ -10,49 +10,68 @@ import LogoSvg from "public/images/logo.svg";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-export default function Login() {
-  const [login, setLogin] = useState({
-    email: "",
-    password: "",
-  });
-  const router = useRouter();
+export default function Login()
 
-  useEffect(() => {
-    console.log("useEffect", login);
-    const value = localStorage.getItem("login");
-    if (value) {
-      const parsedLogin = JSON.parse(value);
-      setLogin(parsedLogin);
-    }
-  }, []);
 
-  useEffect(() => {
-    console.log("useEffect login", login);
-  }, [login]);
+// u page pozvat comp createuser i proslijediti props email i pass
+{
 
-  const saveToLocalStorage = (e) => {
-    e.preventDefault();
-    const loginJSON = JSON.stringify(login);
-    console.log(loginJSON);
-    localStorage.setItem("login", loginJSON);
-  };
+  async function createUser(data) {
+    "use server"
+    const email = data.get("email")?.valueOf()
+    const password = data.get("password")?.valueOf()
+  
+    await prisma.user.create({data: {email, password}})
+  
+    revalidatePath("/")
+    redirect("/")
+  }
+  
+  // const [login, setLogin] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+  // const router = useRouter();
 
-  const handleFormSubmit = (e) => {
-    saveToLocalStorage(e);
-    router.push("/");
-  };
+  // useEffect(() => {
+  //   console.log("useEffect", login);
+  //   const value = localStorage.getItem("login");
+  //   if (value) {
+  //     const parsedLogin = JSON.parse(value);
+  //     setLogin(parsedLogin);
+  //   }
+  // }, []);
 
-  const setAuth = (field, value) => {
-    setLogin({
-      ...login,
-      [field]: value,
-    });
-  };
+  // useEffect(() => {
+  //   console.log("useEffect login", login);
+  // }, [login]);
 
-  const handleChange = (e) => {
-    setAuth(e.target.name, e.target.value);
-  };
+  // const saveToLocalStorage = (e) => {
+  //   e.preventDefault();
+  //   const loginJSON = JSON.stringify(login);
+  //   console.log(loginJSON);
+  //   localStorage.setItem("login", loginJSON);
+  // };
+
+  // const handleFormSubmit = (e) => {
+  //   saveToLocalStorage(e);
+  //   router.push("/");
+  // };
+
+  // const setAuth = (field, value) => {
+  //   setLogin({
+  //     ...login,
+  //     [field]: value,
+  //   });
+  // };
+
+  // const handleChange = (e) => {
+  //   setAuth(e.target.name, e.target.value);
+  // };
 
   return (
     <div className={styles.body}>
@@ -63,7 +82,7 @@ export default function Login() {
             window.open("https://www.spotify.com");
           }}
         >
-          <LogoSvg />
+          {/* <LogoSvg /> */}
         </div>
       </div>
       <div className={styles.loginContainer}>
@@ -91,21 +110,23 @@ export default function Login() {
         </div>
 
         <div className={clsx(styles.wrapper, styles.wrapperLast)}>
-          <form className={styles.form} onSubmit={handleFormSubmit}>
+          <form className={styles.form}
+          // onSubmit={handleFormSubmit}
+          action={createUser}>
             <InputControl
               name="email"
               label="Email or username"
               placeholder="Email or username"
-              value={login.email}
-              onChange={handleChange}
+              // value={login.email}
+              // onChange={handleChange}
               required
             />
             <PasswordControl
+            name="password"
               label="Password"
               placeholder="Password"
-              value={login.password}
-              name="password"
-              onChange={handleChange}
+              // value={login.password}
+              // onChange={handleChange}
               required
             />
 
