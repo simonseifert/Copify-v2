@@ -10,7 +10,7 @@ async function createUser(data) {
 
   await prisma.user.create({data: {email, password}})
 
-  revalidatePath("/todo")
+  revalidatePath("/")
   redirect("/todo")
 }
 
