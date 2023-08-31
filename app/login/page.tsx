@@ -9,7 +9,6 @@ import { PasswordControl } from "@/components/PasswordControl";
 import LogoSvg from "public/images/logo.svg";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
 
 export default function Login() {

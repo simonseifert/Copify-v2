@@ -14,6 +14,14 @@ export default async function Home() {
       <Link href="/login">Login</Link>
       <br />
       Hello {user?.email}
+      <br />
+      <br />
+      Users list:
+      <ul>
+        {users.map((user) => (
+          <li>{user.email}</li>
+        ))}
+      </ul>
     </main>
   );
 }

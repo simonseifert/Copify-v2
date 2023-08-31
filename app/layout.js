@@ -12,8 +12,8 @@ export default async function RootLayout({ children }) {
 
 export const metadata = {
   title: {
-    template: "%s | Copyify",
-    default: "Copyify",
+    template: "%s | Copify",
+    default: "Copify",
   },
   description: "",
 };

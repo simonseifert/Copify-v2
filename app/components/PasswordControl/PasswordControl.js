@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./PasswordControl.module.css";
 import ShowIcon from "public/images/show.svg";
 import { useState } from "react";
