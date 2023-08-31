@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export default async function Page() {
 
+  revalidatePath("/todo")
   const users = await prisma.user.findMany()
   return (
     <main style={{ padding: 50 }}>
