@@ -1,35 +1,11 @@
-"use client"
-
-import Link from "next/link";
-import { Button } from "@/components/Button";
 import styles from "@/styles/login.module.css";
 import { SocialAuthButtons } from "@/components/SocialAuthButtons";
-import { InputControl } from "@/components/InputControl";
-import { PasswordControl } from "@/components/PasswordControl";
 import LogoSvg from "public/images/logo.svg";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { LoginForm } from "@/components/LoginForm";
+import Link from "next/link";
 
-export default function Login()
-
-
-// u page pozvat comp createuser i proslijediti props email i pass
-{
-
-  async function createUser(data) {
-    "use server"
-    const email = data.get("email")?.valueOf()
-    const password = data.get("password")?.valueOf()
-  
-    await prisma.user.create({data: {email, password}})
-  
-    revalidatePath("/")
-    redirect("/")
-  }
+export default function Login(){
   
   // const [login, setLogin] = useState({
   //   email: "",
@@ -78,9 +54,9 @@ export default function Login()
       <div className={styles.header}>
         <div
           className={styles.logo}
-          onClick={() => {
-            window.open("https://www.spotify.com");
-          }}
+          // onClick={() => {
+          //   window.open("https://www.spotify.com");
+          // }}
         >
           {/* <LogoSvg /> */}
         </div>
@@ -110,45 +86,7 @@ export default function Login()
         </div>
 
         <div className={clsx(styles.wrapper, styles.wrapperLast)}>
-          <form className={styles.form}
-          // onSubmit={handleFormSubmit}
-          action={createUser}>
-            <InputControl
-              name="email"
-              label="Email or username"
-              placeholder="Email or username"
-              // value={login.email}
-              // onChange={handleChange}
-              required
-            />
-            <PasswordControl
-            name="password"
-              label="Password"
-              placeholder="Password"
-              // value={login.password}
-              // onChange={handleChange}
-              required
-            />
-
-            <label className={styles.switch}>
-              <input type="checkbox" />
-              <span className={styles.slider}></span>
-            </label>
-
-            <label className={styles.rememberMe}>Remember me</label>
-
-            <Button variant="primary" type="submit">
-              <span>Log In</span>
-            </Button>
-            <div className={styles.centerBlock}>
-              <Link
-                className={styles.account}
-                href="https://accounts.spotify.com/#"
-              >
-                Forgot your password?
-              </Link>
-            </div>
-          </form>
+         <LoginForm />
         </div>
 
         <div className={styles.centerBlockBotom}>
