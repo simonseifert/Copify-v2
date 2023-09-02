@@ -1,22 +1,25 @@
 import styles from "./InputControl.module.scss";
+import clsx from "clsx";
 
 export const InputControl = (props) => {
+  const { color, name, label, placeholder, required, description } = props;
   return (
     <>
-      <label className={styles.label}>{props.label}</label>
+      <label className={styles.label}>{label}</label>
       <div className={styles.wrapper}>
         <input
-          className={styles.input}
+          className={clsx(styles.input, {
+          [styles.inputDark]: color === "dark",
+          [styles.inputLight]: color === "light",
+        })}
           type="text"
-          placeholder={props.placeholder}
-          value={props.value}
-          onChange={props.onChange}
-          required={props.required}
-          name={props.name}
+          placeholder={placeholder}
+          required={required}
+          name={name}
         />
       </div>
-      {props.description && (
-        <label className={styles.description}>{props.description}</label>
+      {description && (
+        <label className={styles.description}>{description}</label>
       )}
     </>
   );

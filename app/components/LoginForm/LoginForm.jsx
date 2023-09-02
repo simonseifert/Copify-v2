@@ -17,7 +17,7 @@ export const LoginForm = () => {
     setMessage(res.message);
 
     if (res.status === "success") {
-      redirect("/todo");
+      redirect("/");
     }
   }
 
@@ -33,8 +33,6 @@ export const LoginForm = () => {
         name="email"
         label="Email or username"
         placeholder="Email or username"
-        // value={login.email}
-        // onChange={handleChange}
         required
       />
 
@@ -42,8 +40,6 @@ export const LoginForm = () => {
         name="password"
         label="Password"
         placeholder="Password"
-        // value={login.password}
-        // onChange={handleChange}
         required
       />
 

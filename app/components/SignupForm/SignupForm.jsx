@@ -17,7 +17,7 @@ export const SignupForm = () => {
     setMessage(res.message);
 
     if (res.status === "success") {
-      redirect("/todo");
+      redirect("/");
     }
   }
 
@@ -31,20 +31,26 @@ export const SignupForm = () => {
 
       <InputControl
         name="email"
-        label="Email or username"
-        placeholder="Email or username"
-        // value={login.email}
-        // onChange={handleChange}
+        label="What’s your email address?"
+        placeholder="Enter your email."
         required
+        color="light"
       />
 
       <PasswordControl
         name="password"
-        label="Password"
-        placeholder="Password"
-        // value={login.password}
-        // onChange={handleChange}
+        label="Create a password"
+        placeholder="Create a password."
         required
+        color="light"
+      />
+
+      <InputControl
+        name="name"
+        label="What should we call you?"
+        placeholder="Enter a profile name."
+        required
+        color="light"
       />
 
       <label className={styles.switch}>
@@ -55,7 +61,7 @@ export const SignupForm = () => {
       <label className={styles.rememberMe}>Remember me</label>
 
       <Button variant="primary" type="submit">
-        <span>Log In</span>
+        <span>Sign up</span>
       </Button>
 
       <div className={styles.centerBlock}>

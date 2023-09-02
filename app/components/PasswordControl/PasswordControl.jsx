@@ -3,21 +3,24 @@
 import styles from "./PasswordControl.module.scss";
 import ShowIcon from "public/images/show.svg";
 import { useState } from "react";
+import clsx from "clsx";
 
 export const PasswordControl = (props) => {
+  const { color, name, label, placeholder, required, description } = props;
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <label className={styles.label}>{props.label}</label>
+      <label className={styles.label}>{label}</label>
       <div className={styles.wrapper}>
         <input
-          className={styles.input}
+          className={clsx(styles.input, {
+          [styles.inputDark]: color === "dark",
+          [styles.inputLight]: color === "light",
+        })}
           type={visible ? "text" : "password"}
-          placeholder={props.placeholder}
-          value={props.value}
-          onChange={props.onChange}
-          required={props.required}
-          name={props.name}
+          placeholder={placeholder}
+          required={required}
+          name={name}
         />
         <button
           className={styles.show}
@@ -29,8 +32,8 @@ export const PasswordControl = (props) => {
           <ShowIcon />
         </button>
       </div>
-      {props.description && (
-        <label className={styles.description}>{props.description}</label>
+      {description && (
+        <label className={styles.description}>{description}</label>
       )}
     </>
   );
