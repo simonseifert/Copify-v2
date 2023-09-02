@@ -1,4 +1,4 @@
-import styles from "@/styles/login.module.css";
+import styles from "@/styles/login.module.scss";
 import { SocialAuthButtons } from "@/components/SocialAuthButtons";
 import LogoSvg from "public/images/logo.svg";
 import clsx from "clsx";

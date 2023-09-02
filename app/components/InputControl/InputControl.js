@@ -1,4 +1,4 @@
-import styles from "./InputControl.module.css";
+import styles from "./InputControl.module.scss";
 
 export const InputControl = (props) => {
   return (
