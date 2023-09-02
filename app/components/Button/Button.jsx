@@ -8,6 +8,8 @@ export const Button = (props) => {
       className={clsx(styles.button, {
         [styles.buttonOutline]: variant === "outline",
         [styles.buttonPrimary]: variant === "primary",
+        [styles.buttonFacebook]: variant === "facebook",
+        [styles.buttonSignup]: variant === "signup",
       })}
       type={type}
     >
