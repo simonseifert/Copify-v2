@@ -1,7 +1,7 @@
 import styles from "@/styles/signup.module.scss";
 import { SocialAuthButtons } from "@/components/SocialAuthButtons";
 import clsx from "clsx";
-import { LoginForm } from "@/components/LoginForm";
+import { SignupForm } from "@/components/SignupForm";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -39,7 +39,7 @@ export default function Signup() {
 
         <div className={clsx(styles.wrapper, styles.wrapperLast)}>
           <h2 className={styles.subtitle}>Sign up with your email address</h2>
-          <LoginForm />
+          <SignupForm />
         </div>
 
         <div className={styles.centerBlockBotom}>
