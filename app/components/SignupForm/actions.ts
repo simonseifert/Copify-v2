@@ -16,6 +16,7 @@ export async function signup(data) {
 
     const email = data.get("email")?.valueOf();
     const password = data.get("password")?.valueOf();
+    const name = data.get("name")?.valueOf();
 
     if (!email || !password) {
       return;
@@ -34,6 +35,7 @@ export async function signup(data) {
         data: {
           email: email,
           password: password,
+          name: name,
         },
       });
       revalidatePath("/");
