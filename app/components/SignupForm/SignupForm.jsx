@@ -8,7 +8,6 @@ import { PasswordControl } from "@/components/PasswordControl";
 import { Button } from "@/components/Button";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export const SignupForm = () => {
   const [message, setMessage] = useState("");
@@ -18,8 +17,7 @@ export const SignupForm = () => {
     setMessage(res.message);
 
     if (res.status === "success") {
-      revalidatePath("/");
-      redirect("/");
+      redirect(res.user.id);
     }
   }
 

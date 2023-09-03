@@ -17,7 +17,7 @@ export const LoginForm = () => {
     setMessage(res.message);
 
     if (res.status === "success") {
-      redirect("/");
+      redirect(res.user.id);
     }
   }
 

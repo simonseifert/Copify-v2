@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 const errorResponse = { status: "error", message: "There was an error." };
-const successResponse = { status: "success", message: "Success!" };
 
 export async function signup(data) {
   try {
@@ -38,6 +37,19 @@ export async function signup(data) {
           name: name,
         },
       });
+
+      const user = await prisma.user.findFirst({
+        where: {
+          email: email,
+        },
+      });
+
+      const successResponse = {
+        status: "success",
+        message: "Success!",
+        user: user,
+      };
+
       revalidatePath("/");
 
       return successResponse;

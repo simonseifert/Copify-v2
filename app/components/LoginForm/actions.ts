@@ -1,9 +1,9 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 const errorResponse = { status: "error", message: "There was an error." };
-const successResponse = { status: "success", message: "Success!" };
 
 export async function login(data) {
   try {
@@ -16,19 +16,27 @@ export async function login(data) {
     const email = data.get("email")?.valueOf();
     const password = data.get("password")?.valueOf();
 
-    const result = await prisma.user.findFirst({
+    const user = await prisma.user.findFirst({
       where: {
         email: email,
       },
     });
 
-    console.log("result", result);
+    console.log("result", user);
 
-    if (!result) {
+    if (!user) {
       return errorResponse;
     }
 
-    if (result?.password === password) {
+    if (user?.password === password) {
+      const successResponse = {
+        status: "success",
+        message: "Success!",
+        user: user,
+      };
+
+      revalidatePath("/");
+
       return successResponse;
     } else {
       return errorResponse;
