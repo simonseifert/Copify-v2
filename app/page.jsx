@@ -1,12 +1,12 @@
 import Link from "next/link";
-import styles from "@/styles/Home.module.scss";
+import s from "@/styles/Home.module.scss";
 import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
   const users = await prisma.user.findMany();
 
   return (
-    <main style={{ padding: 50 }}>
+    <main className={s.main}>
       <Link href="/login">Login</Link>
       <br />
       <br />
