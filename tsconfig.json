@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/components/PasswordControl/PasswordControl.jsx", "app/components/InputControl/InputControl.jsx", "app/components/LoginForm/LoginForm.jsx", "app/components/SocialAuthButtons/SocialAuthButtons.jsx", "app/layout.jsx", "app/page.jsx", "app/todo/new/page.jsx", "app/todo/page.jsx", "app/login/page.jsx", "app/components/CreateUser/index.js", "app/components/Button/index.js", "app/components/PasswordControl/index.js", "app/components/SocialAuthButtons/index.js", "app/components/LoginForm/index.js"  ],
+, "app/components/PasswordControl/PasswordControl.jsx", "app/components/InputControl/InputControl.jsx", "app/components/LoginForm/LoginForm.jsx", "app/components/SocialAuthButtons/SocialAuthButtons.jsx", "app/layout.jsx", "app/page.jsx", "app/[id]/new/page.jsx", "app/[id]/page.jsx", "app/login/page.jsx", "app/components/CreateUser/index.js", "app/components/Button/index.js", "app/components/PasswordControl/index.js", "app/components/SocialAuthButtons/index.js", "app/components/LoginForm/index.js"  ],
   "exclude": [
     "node_modules"
   ]
